@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'cc-event-component',
-  templateUrl: './event-component.component.html',
-  styleUrls: ['./event-component.component.css']
+  selector: 'cc-event',
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.css']
 })
-export class EventComponentComponent implements OnInit {
+export class EventComponent implements OnInit {
 
   constructor() { }
 
