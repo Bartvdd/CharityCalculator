@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventModule } from '../event/event.module';
 
 
 
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EventModule
   ],
   exports: [
     HomeComponent

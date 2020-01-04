@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table" *ngIf='events && events.length'>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Supplement</th>
+            <th>Deductable Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let event of events'>
+            <td>{{event.eventName}}</td>
+            <td>{{event.eventDescription}}</td>
+            <td>{{event.eventDate}}</td>
+            <td>{{event.eventType}}</td>
+            <td>{{event.eventSupplement}}</td>
+            <td>Deductable Amount to be calculated</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

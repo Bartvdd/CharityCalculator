@@ -5,10 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\app\event\event.service.ts" />
+    <None Remove="src\app\event\event.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="src\assets\events.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

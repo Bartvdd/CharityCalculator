@@ -1,0 +1,26 @@
+[
+  {
+    "eventId": 1,
+    "eventName": "Runner run!",
+    "eventDate": "2020-05-01",
+    "eventDescription": "Run as fast as you can!",
+    "eventType": "Running",
+    "isSupplemented": "1"
+  },
+  {
+    "eventId": 2,
+    "eventName": "Swimmer swim!",
+    "eventDate": "2020-06-01",
+    "eventDescription": "Swim as fast as you can!",
+    "eventType": "Swimming",
+    "isSupplemented": "0"
+  },
+  {
+    "eventId": 3,
+    "eventName": "Jumper jump!",
+    "eventDate": "2020-04-01",
+    "eventDescription": "Jump as high as you can!",
+    "eventType": "Jumping",
+    "isSupplemented": "0"
+  }
+]
