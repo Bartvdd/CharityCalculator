@@ -1,33 +1,47 @@
 <div class="card">
   <div class="card-header">
-    {{pageTitle}}
+    <h2>{{pageTitle}}</h2>
   </div>
-
   <div class="card-body">
-    <div class="table-responsive">
-      <table class="table" *ngIf='events && events.length'>
-        <thead>
-          <tr>
-            <th>Event</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Supplement</th>
-            <th>Deductable Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor='let event of events'>
-            <td>{{event.eventName}}</td>
-            <td>{{event.eventDescription}}</td>
-            <td>{{event.eventDate}}</td>
-            <td>{{event.eventType}}</td>
-            <td>{{event.eventSupplement}}</td>
-            <td>Deductable Amount to be calculated</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="row">
+        <div class="col-md-2">Donation Amount:</div>
+        <div class="col-md-4">
+          <input type="number" [(ngModel)]="donation" />
+        </div>
+      </div>
+      <div class="row"
+           *ngIf="donation">
+        <div class="col-md-6">
+          <h4>Amount you would donate: {{donation}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table" *ngIf='events && events.length'>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Is Supplemented</th>
+              <th>Deductable Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let event of events'>
+              <td>{{event.eventName}}</td>
+              <td>{{event.eventDescription}}</td>
+              <td>{{event.eventDate}}</td>
+              <td>{{event.eventType}}</td>
+              <td>{{event.isSupplemented}}</td>
+              <td *ngIf="event.isSupplemented">{{donation * (event.eventSupplement/100 + 1) * ( taxrate / (100 - taxrate) )}}</td>
+              <td *ngIf="!event.isSupplemented">{{donation * ( taxrate / (100 - taxrate) )}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 

@@ -5,6 +5,7 @@ export class Event {
   eventDescription: string;
   eventType: EventType;
   isSupplemented: boolean;
+  eventSupplement: number;
 }
 
 export enum EventType {

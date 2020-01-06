@@ -6,7 +6,7 @@ import { HomeModule } from './home/home.module';
 import { EventModule } from './event/event.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { EventData } from './event/event.data';
+import { InMemoryData } from './inmemorydata/inmemorydata.data';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { EventData } from './event/event.data';
     HomeModule,
     EventModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(EventData)
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryData)
   ],
   providers: [],
   bootstrap: [AppComponent]

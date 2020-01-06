@@ -1,12 +1,12 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Event, EventType } from './event'
+import { Event, EventType } from '../event/event'
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class EventData implements InMemoryDbService {
+export class InMemoryData implements InMemoryDbService {
   createDb() {
     const events: Event[] = [
       {
@@ -15,7 +15,8 @@ export class EventData implements InMemoryDbService {
         eventDate: "2020-05-01",
         eventDescription: "Run as fast as you can!",
         eventType: EventType.Running,
-        isSupplemented: true
+        isSupplemented: true,
+        eventSupplement: 5
       },
       {
         id: 2,
@@ -23,7 +24,8 @@ export class EventData implements InMemoryDbService {
         eventDate: "2020-06-01",
         eventDescription: "Swim as fast as you can!",
         eventType: EventType.Swimming,
-        isSupplemented: false
+        isSupplemented: false,
+        eventSupplement: 0
       },
       {
         id: 3,
@@ -31,10 +33,12 @@ export class EventData implements InMemoryDbService {
         eventDate: "2020-04-01",
         eventDescription: "Jump as high as you can!",
         eventType: EventType.Jumping,
-        isSupplemented: false
+        isSupplemented: false,
+        eventSupplement: 0
       }
     ];
-    return { events };
+    const taxrate = 20;
+    return { events, taxrate };
   }
 
 }
