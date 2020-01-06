@@ -26,16 +26,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.getUser(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
-    if (this.user != undefined && this.user!=null) {
+    if (this.loginService.user != undefined && this.loginService.user!=null) {
       this.loggedIn = true;
     }
   }
 
   getUser(username: string, password: string) {
-    this.loginService.getUserByCredentials(username, password).subscribe({
-      next: user => this.user = user,
-      error: err => this.errorMessage = err
-    });
+    this.loginService.getUserByCredentials(username, password)
   }
 
 

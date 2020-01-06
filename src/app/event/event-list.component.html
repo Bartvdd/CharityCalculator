@@ -12,10 +12,13 @@
       <div class="row"
            *ngIf="donation">
         <div class="col-md-6">
-          <h4>Amount you would donate: {{donation}}</h4>
+          Amount you would donate: {{donation}}
         </div>
       </div>
     </div>
+  <!--<div class="card-body" >
+    {{this.user.userType}}
+  </div>-->
     <div class="card-body">
       <div class="table-responsive">
         <table class="table" *ngIf='events && events.length'>
