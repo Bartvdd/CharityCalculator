@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { EventModule } from './event/event.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { EventData } from './event/event.data';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HomeModule,
+    EventModule,
     HttpClientModule,
-    EventModule
+    HttpClientInMemoryWebApiModule.forRoot(EventData)
   ],
   providers: [],
   bootstrap: [AppComponent]

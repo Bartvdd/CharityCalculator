@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\app\event\event.data.ts" />
     <None Remove="src\app\event\event.service.ts" />
     <None Remove="src\app\event\event.ts" />
   </ItemGroup>

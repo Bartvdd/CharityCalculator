@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IEvent } from './event';
+import { Event } from './event';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -11,14 +11,21 @@ import { catchError, tap } from 'rxjs/operators';
 )
 export class EventService {
 
-  private _eventUrl = "/assets/events.json";
+  private _eventUrl = "api/events";
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<IEvent[]> {
-    return this.http.get<IEvent[]>(this._eventUrl).pipe(
+  getEvents(): Observable<Event[]> {
+    console.log("fetching data");
+    return this.http.get<Event[]>(this._eventUrl).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError));
+  }
+
+
+  getEvent(id: number): Observable<Event> {
+    const url = `${this._eventUrl}/${id}`;
+    return this.http.get<Event>(url);
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -27,7 +34,7 @@ export class EventService {
       errorMessage = `An error occured: ${err.error.message}`;
     }
     else {
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message} + ${err.url}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);

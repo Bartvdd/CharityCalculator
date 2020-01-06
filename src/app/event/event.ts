@@ -1,5 +1,5 @@
-export interface IEvent {
-  eventId: number;
+export class Event {
+  id: number;
   eventName: string;
   eventDate: string;
   eventDescription: string;
@@ -7,7 +7,7 @@ export interface IEvent {
   isSupplemented: boolean;
 }
 
-enum EventType {
+export enum EventType {
   Running = 1,
   Swimming,
   Jumping,
