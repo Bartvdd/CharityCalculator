@@ -6,13 +6,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryData } from '../inmemorydata/inmemorydata.data';
+import { RoundDecimalPipe } from '../shared/rounddecimal.pipe';
 
 
 
 @NgModule({
   declarations: [
     EventListComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    RoundDecimalPipe
   ],
   imports: [
     CommonModule,

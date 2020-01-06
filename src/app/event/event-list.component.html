@@ -36,8 +36,8 @@
               <td>{{event.eventDate}}</td>
               <td>{{event.eventType}}</td>
               <td>{{event.isSupplemented}}</td>
-              <td *ngIf="event.isSupplemented">{{donation * (event.eventSupplement/100 + 1) * ( taxrate / (100 - taxrate) )}}</td>
-              <td *ngIf="!event.isSupplemented">{{donation * ( taxrate / (100 - taxrate) )}}</td>
+              <td *ngIf="event.isSupplemented">{{donation * (event.eventSupplement/100 + 1) * ( taxrate / (100 - taxrate) ) | rounddecimal}}</td>
+              <td *ngIf="!event.isSupplemented">{{donation * ( taxrate / (100 - taxrate) ) | rounddecimal}}</td>
             </tr>
           </tbody>
         </table>
