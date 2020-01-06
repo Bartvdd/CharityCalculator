@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
+import { User } from '../../data/user';
 
 @Component({
   selector: 'cc-login',
@@ -10,8 +12,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loggedIn: boolean;
   submitted: boolean;
+  user: User;
+  errorMessage: string;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private loginService:LoginService) {
     
   }
 
@@ -20,10 +24,20 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    if (this.loginForm.controls.username.value === "test" && this.loginForm.controls.password.value == "test") {
+
+    this.getUser(this.loginForm.controls.username.value, this.loginForm.controls.password.value);
+    if (this.user != undefined && this.user!=null) {
       this.loggedIn = true;
     }
   }
+
+  getUser(username: string, password: string) {
+    this.loginService.getUserByCredentials(username, password).subscribe({
+      next: user => this.user = user,
+      error: err => this.errorMessage = err
+    });
+  }
+
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

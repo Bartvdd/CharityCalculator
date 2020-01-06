@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Event } from '../data/event';
+import { User } from '../../data/user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -9,23 +9,17 @@ import { catchError, tap } from 'rxjs/operators';
 }
 
 )
-export class EventService {
+export class LoginService {
 
-  private _eventUrl = "api/events";
+  private _eventUrl = "api/users";
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<Event[]> {
+  getUserByCredentials(username: string, password: string): Observable<User> {
     console.log("fetching data");
-    return this.http.get<Event[]>(this._eventUrl).pipe(
+    return this.http.get<User>(this._eventUrl).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError));
-  }
-
-
-  getEvent(id: number): Observable<Event> {
-    const url = `${this._eventUrl}/${id}`;
-    return this.http.get<Event>(url);
   }
 
   private handleError(err: HttpErrorResponse) {

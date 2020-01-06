@@ -1,6 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Event, EventType } from '../event/event'
+import { Event, EventType } from '../data/event'
 import { Injectable } from '@angular/core';
+import { User, UserType } from '../data/user';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +39,28 @@ export class InMemoryData implements InMemoryDbService {
       }
     ];
     const taxrate = 20;
-    return { events, taxrate };
-  }
+    const users: User[] = [
+      {
+        id: 1,
+        userName: "donor",
+        userPassword: "donor",
+        userType: UserType.Donor
+      },
+      {
+        id: 2,
+        userName: "sponsor",
+        userPassword: "sponsor",
+        userType: UserType.Sponsor
+      },
+      {
+        id: 3,
+        userName: "siteadmin",
+        userPassword: "siteadmin",
+        userType: UserType.SiteAdmin
+      }
+    ];
 
+    return { events, taxrate, users };
+  }
 }
+
